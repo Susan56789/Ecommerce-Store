@@ -1,12 +1,12 @@
 import React from 'react';
 import { AppBar, Toolbar, IconButton, Badge, MenuItem, Menu, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
-import useStyles from '../products/Product/styles';
+//import useStyles from '../products/Product/styles';
 import logo from "../assets/logo.jpg";
-
+import styles from '../../App.css';
 
 const Navbar = () => {
-    const classes = useStyles();
+    const classes = styles;
 
     return (
         <>
