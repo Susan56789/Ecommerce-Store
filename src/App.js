@@ -4,7 +4,7 @@ import './App.css';
 //Backend
 import { commerce } from './lib/Commerce';
 
-import {Products, Navbar} from './components';
+import {Products, Navbar,Cart} from './components';
 
 
 const App = () =>{
@@ -42,7 +42,8 @@ fetchCart();
   return (
     <div className="App">
       <Navbar totalItems={cart.total_items}/>
-<Products products={products} onAddToCart={handleAddToCart}/>
+{/*<Products products={products} onAddToCart={handleAddToCart}/>*/}
+<Cart cart={cart}/>
     </div>
   );
 }
