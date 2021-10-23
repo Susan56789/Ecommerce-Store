@@ -11,7 +11,7 @@ const Product = ({product}) => {
 
     return (
         <Card className={classes.root}>
-<CardMedia className={classes.media} image={product.id.url} title={product.name}/>
+<CardMedia className={classes.media} image={product.image.url} title={product.name}/>
        
        <CardContent>
            <div className={classes.cardContent}>
@@ -22,9 +22,8 @@ const Product = ({product}) => {
 {product.price.formatted_with_symbol}
 </Typography>
            </div>
-           <Typography variant='body2' color='textSecondary'>
-{product.description}
-           </Typography>
+           <Typography dangerouslySetInnerHtml={{__html:product.description}} variant='body2' color='textSecondary' />
+
        </CardContent>
        <CardActions disableSpacing className={classes.cardActions}>
 <IconButton aria-label="Add to Cart">

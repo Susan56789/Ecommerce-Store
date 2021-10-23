@@ -7,8 +7,10 @@ export default makeStyles((theme) => ({
       maxWidth:'100%'
     },
     media:{
-        height:0,
-        paddingTop:'56.25%'
+         height:'100px',
+        width:'100%',
+        paddingTop:'56.25%',
+        
     },
     cardActions:{
         display:'flex',
