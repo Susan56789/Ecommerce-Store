@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 //Backend
 import { commerce } from './lib/Commerce';
 
-import {Products, Navbar,Cart} from './components';
+import {Products, Navbar,Cart, Checkout} from './components';
 
 
 const App = () =>{
@@ -72,7 +72,9 @@ fetchCart();
         handleUpdateCart = {handleUpdateCart}
         />
         </Route>
-
+<Route exact path='/checkout'>
+<Checkout />
+</Route>
       </Switch>
     </div>
 
