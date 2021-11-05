@@ -73,7 +73,7 @@ fetchCart();
         />
         </Route>
 <Route exact path='/checkout'>
-<Checkout />
+<Checkout cart={cart}/>
 </Route>
       </Switch>
     </div>
