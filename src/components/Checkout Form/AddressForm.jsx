@@ -72,7 +72,7 @@ useEffect(()=>{
           {subdivisions.map((subdivision)=>(
               <MenuItem key={subdivision.id} value={subdivision.id}>
               {subdivision.label}
-              </MenuItem>
+              </MenuItem> 
           ))};
          </Select>
       </Grid>
