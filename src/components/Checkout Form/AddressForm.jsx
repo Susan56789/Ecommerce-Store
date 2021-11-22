@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Select,MenuItem, Button, Grid, Typography, InputLabel } from  '@material-ui/core';
 import {useForm, FormProvider} from 'react-hook-form';
 import FormInput from './CustomTextField';
-
+import {Link} from 'react-router-dom';
 
 import { commerce } from '../../lib/Commerce';
 
@@ -93,7 +93,7 @@ if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, )
       </Grid>
       <Grid item xs={12} sm={6}>
          <InputLabel>Shipping Options</InputLabel>
-         <Select defaultValue="Select" value={shippingOption} fullWidth onChange={(e)=>setShippingOption(e.target.value)}>
+         <Select value={shippingOption} fullWidth onChange={(e)=>setShippingOption(e.target.value)}>
          {options.map((option)=>(
               <MenuItem key={option.id} value={option.id}>
               {option.label}
@@ -103,6 +103,11 @@ if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, )
       </Grid>
       
       </Grid>
+      <br/>
+      <div style={{display:'flex', justifyContent:'space-between'}}>
+          <Button component={Link} to="/cart" variant='outlined'>Back to Cart</Button>
+          <Button type='submit' variant='contained' color='primary'>Next</Button>
+    </div>
        </form>
      </FormProvider>
         </>
