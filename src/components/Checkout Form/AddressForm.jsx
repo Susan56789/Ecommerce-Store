@@ -73,7 +73,7 @@ if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, )
       
       <Grid item xs={12} sm={6}>
          <InputLabel>Shipping Country</InputLabel>
-         <Select  value={shippingCountry} fullWidth onChange={(e) => setShippingCountry(e.target.value)}>
+         <Select defaultValue="Select" value={shippingCountry} fullWidth onChange={(e) => setShippingCountry(e.target.value)}>
           {countries.map((country)=>(
               <MenuItem key={country.id} value={country.id}>
               {country.label}
@@ -83,7 +83,7 @@ if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, )
       </Grid>
       <Grid item xs={12} sm={6}>
          <InputLabel>Shipping Subdivision</InputLabel>
-         <Select  value={shippingSubdivision} fullWidth onChange={(e) => setShippingSubdivision(e.target.value)}>
+         <Select defaultValue="Select"  value={shippingSubdivision} fullWidth onChange={(e) => setShippingSubdivision(e.target.value)}>
           {subdivisions.map((subdivision)=>(
               <MenuItem key={subdivision.id} value={subdivision.id}>
               {subdivision.label}
@@ -93,7 +93,7 @@ if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, )
       </Grid>
       <Grid item xs={12} sm={6}>
          <InputLabel>Shipping Options</InputLabel>
-         <Select  value={shippingOption} fullWidth onChange={(e)=>setShippingOption(e.target.value)}>
+         <Select defaultValue="Select" value={shippingOption} fullWidth onChange={(e)=>setShippingOption(e.target.value)}>
          {options.map((option)=>(
               <MenuItem key={option.id} value={option.id}>
               {option.label}
