@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { Select, MenuItem, Button, Grid, Typography, InputLabel } from  '@material-ui/core';
+import { Select,MenuItem, Button, Grid, Typography, InputLabel } from  '@material-ui/core';
 import {useForm, FormProvider} from 'react-hook-form';
 import FormInput from './CustomTextField';
+
 
 import { commerce } from '../../lib/Commerce';
 
@@ -35,11 +36,14 @@ const subdivisions = Object.entries(shippingSubdivisions).map(([code, name]) => 
        
 useEffect(() =>{
 fetchShippingCountries(checkoutToken.id);
-},[]);
+},[checkoutToken.id]);
+
 
 useEffect(()=>{
     if(shippingCountry) fetchSubdivisions(shippingCountry);
 },[shippingCountry]);
+
+
 
     return (
         <>
@@ -58,7 +62,7 @@ useEffect(()=>{
       
       <Grid item xs={12} sm={6}>
          <InputLabel>Shipping Country</InputLabel>
-         <Select value={shippingCountry} fullWidth onChange={(e) => setShippingCountry(e.target.value)}>
+         <Select  value={shippingCountry} fullWidth onChange={(e) => setShippingCountry(e.target.value)}>
           {countries.map((country)=>(
               <MenuItem key={country.id} value={country.id}>
               {country.label}
@@ -68,7 +72,7 @@ useEffect(()=>{
       </Grid>
       <Grid item xs={12} sm={6}>
          <InputLabel>Shipping Subdivision</InputLabel>
-         <Select value={shippingSubdivision} fullWidth onChange={(e) => setShippingSubdivision(e.target.value)}>
+         <Select  value={shippingSubdivision} fullWidth onChange={(e) => setShippingSubdivision(e.target.value)}>
           {subdivisions.map((subdivision)=>(
               <MenuItem key={subdivision.id} value={subdivision.id}>
               {subdivision.label}
@@ -78,7 +82,7 @@ useEffect(()=>{
       </Grid>
       <Grid item xs={12} sm={6}>
          <InputLabel>Shipping Options</InputLabel>
-         <Select value={''} fullWidth onChange={' '}>
+         <Select  value={''} fullWidth onChange={' '}>
              <MenuItem key={''} value={''}>
              Nairobi
              </MenuItem>
