@@ -7,20 +7,22 @@ import { commerce } from '../../lib/Commerce';
 
 const AddressForm = ({checkoutToken}) => {
 const [shippingCountries, setShippingCountries] = useState([]);
-const [shippingCounty, setShippingCounty] = useState('');
+const [shippingCountry, setShippingCountry] = useState('');
 const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
 const [shippingSubdivision, setShippingSubdivision] = useState('');
 const [shippingOptions, setShippingOptions] = useState([]);
 const [shippingOption, setShippingOption] = useState('');
 
+const countries = Object.entries(shippingCountries).map(([code, name]) => ({id:code, label:name}));
 
-    const methods = useForm();
+ const methods = useForm();
 
-
-   const fetchShippingCountries =  async(checkoutTokenId) =>{
+    
+    const fetchShippingCountries =  async(checkoutTokenId) =>{
           const {countries} = await commerce.services.localeListCountries(checkoutTokenId);
 
           setShippingCountries(countries);
+          setShippingCountry(Object.keys(countries)[0]);
    }
        
 useEffect(() =>{
@@ -44,15 +46,17 @@ fetchShippingCountries(checkoutToken.id);
       
       <Grid item xs={12} sm={6}>
          <InputLabel>Shipping Country</InputLabel>
-         <Select vallue={''} fullWidth onChange={' '}>
-             <MenuItem key={''} value={''}>
-             Nairobi
-             </MenuItem>
+         <Select value={shippingCountry} fullWidth onChange={(e) => setShippingCountry(e.target.value)}>
+          {countries.map((country)=>(
+              <MenuItem key={country.id} value={country.id}>
+              {country.label}
+              </MenuItem>
+          ))};
          </Select>
       </Grid>
       <Grid item xs={12} sm={6}>
          <InputLabel>Shipping Subdivision</InputLabel>
-         <Select vallue={''} fullWidth onChange={' '}>
+         <Select value={''} fullWidth onChange={' '}>
              <MenuItem key={''} value={''}>
              Nairobi
              </MenuItem>
@@ -60,7 +64,7 @@ fetchShippingCountries(checkoutToken.id);
       </Grid>
       <Grid item xs={12} sm={6}>
          <InputLabel>Shipping Options</InputLabel>
-         <Select vallue={''} fullWidth onChange={' '}>
+         <Select value={''} fullWidth onChange={' '}>
              <MenuItem key={''} value={''}>
              Nairobi
              </MenuItem>
