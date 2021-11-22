@@ -1,11 +1,11 @@
 import React,{useState, useEffect} from 'react';
 import {Paper, Stepper, Step, StepLabel, Typography,
-     CircularProgress, Divider, Button} from '@material-ui/core';
+     CircularProgress, Divider, Button, CssBaseline} from '@material-ui/core';
 import useStyles from './styles';
 import AddressForm from '../AddressForm';
 import PaymentForm from '../PaymentForm';
 import { commerce } from '../../../lib/Commerce';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 
 const steps = ['Shipping address', 'Payment details'];
@@ -16,7 +16,9 @@ const Checkout = ({cart, order, onCaptureCheckout, error}) => {
   const [shippingData, setShippingData] = useState({});
 
     const classes = useStyles();
+    const history = useHistory();
 
+    
     useEffect(() =>{
 const generateToken = async () => {
     try{
@@ -24,7 +26,7 @@ const token = await commerce.checkout.generateToken(cart.id,{type:'cart'} );
     
 setCheckoutToken(token);
 } catch(error){
-
+         history.pushState('/');
     }
 
 }
@@ -47,9 +49,9 @@ const next = (data) =>{
 const Confirmation = () => order.customer ? (
   <>
    <div>
-       <Typography variant='h5'>Thank you for your purchase, </Typography>
+       <Typography variant='h5'>Thank you for your purchase, {order.customer.firstname} ! </Typography>
        <Divider className={classes.divider}/>
-       <Typography variant='subtitle1'>Order Ref:</Typography>
+       <Typography variant='subtitle1'>Order Ref:{order.customer_reference}</Typography>
        </div>  
        <br/>
         <Button component={Link} to='/' variant='outlined' type='button'>Back to Home</Button>
@@ -62,6 +64,7 @@ const Confirmation = () => order.customer ? (
 
  return (
         <>
+        <CssBaseline />
          <div className={classes.toolbar}/>
 <main className={classes.layout}>
 <Paper className={classes.paper}>
